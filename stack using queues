@@ -1,0 +1,45 @@
+class Stack{
+    constructor(){
+        this.q1 = []
+        this.max1 = -1
+        this.q2 = []
+    }
+    push(ele){
+        this.q1.push(ele);
+        this.max1 = this.max1 + 1;
+    }
+    pop(){
+        if (this.max1 !== -1){
+            while (this.q1.length > 1){
+                this.q2.push(this.q1.shift());
+            }
+            let topele = this.q1.shift()
+            while (this.q2.length !== 0){
+                this.q1.push(this.q2.shift());
+            }
+            this.max1 = this.max1 - 1;
+            return topele;
+        }
+        else{
+            return `cannot pop,stack is empty`
+        }
+        
+    }
+    display(){
+        return `stack >>> [${this.q1}]`
+    }
+}
+
+const stack1 = new Stack();
+stack1.push(1);
+stack1.push(2);
+stack1.push(3);
+console.log(stack1.display());
+console.log(stack1.pop());
+console.log(stack1.display());
+console.log(stack1.pop());
+console.log(stack1.display());
+console.log(stack1.pop());
+console.log(stack1.display());
+console.log(stack1.pop());
+console.log(stack1.display());
